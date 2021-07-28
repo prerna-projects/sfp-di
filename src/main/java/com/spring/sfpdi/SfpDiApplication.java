@@ -4,7 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.spring.sfpdi.controllers.ConstructorBasedController;
 import com.spring.sfpdi.controllers.MyController;
+import com.spring.sfpdi.controllers.PropertyInjectedController;
+import com.spring.sfpdi.controllers.SetterBasedController;
 
 @SpringBootApplication
 public class SfpDiApplication {
@@ -18,6 +21,21 @@ public class SfpDiApplication {
 		String greetings = myController.sayHello();
 		
 		System.out.println(greetings);
+		
+		System.out.println("--------------------Property Based-----------------");
+		
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+		System.out.println(propertyInjectedController.getGreeting());
+		
+		System.out.println("--------------------Setter Based-----------------");
+		
+		SetterBasedController setterBasedController = (SetterBasedController) ctx.getBean("setterBasedController");
+		System.out.println(setterBasedController.getGreeting());
+		
+		System.out.println("--------------------Constructor Based-----------------");
+		
+		ConstructorBasedController constructorBasedController = (ConstructorBasedController) ctx.getBean("constructorBasedController");
+		System.out.println(constructorBasedController.getGreeting());
 	}
 
 }
