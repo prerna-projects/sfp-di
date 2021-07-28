@@ -4,7 +4,7 @@ package com.spring.sfpdi.controllers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.spring.sfpdi.services.GreetingServiceImpl;
+import com.spring.sfpdi.services.ConstructorInjectedGreetingService;
 
 class SetterBasedControllerTest {
 	
@@ -14,7 +14,7 @@ class SetterBasedControllerTest {
 		
 		controller = new SetterBasedController();
 		
-		controller.setGreetingService( new GreetingServiceImpl());
+		controller.setGreetingService( new ConstructorInjectedGreetingService());
 	}
 
 	@Test
