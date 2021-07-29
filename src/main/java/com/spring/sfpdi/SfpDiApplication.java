@@ -8,6 +8,7 @@ import com.spring.sfpdi.controllers.ConstructorBasedController;
 import com.spring.sfpdi.controllers.MyController;
 import com.spring.sfpdi.controllers.PropertyInjectedController;
 import com.spring.sfpdi.controllers.SetterBasedController;
+import com.spring.sfpdi.controllers.I18nController;
 
 @SpringBootApplication
 public class SfpDiApplication {
@@ -15,6 +16,11 @@ public class SfpDiApplication {
 	public static void main(String[] args) {
 	
 		ApplicationContext ctx = SpringApplication.run(SfpDiApplication.class, args);
+		
+		System.out.println("---------------------Profile Service---------------");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		
+		System.out.println(i18nController.sayHello());
 		
 		System.out.println("--------------------Primary Bean------------------");
 		MyController myController = (MyController)ctx.getBean("myController");
