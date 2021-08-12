@@ -3,11 +3,15 @@ package com.spring.sfpdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.spring.sfpdi.controllers.ConstructorBasedController;
 import com.spring.sfpdi.controllers.MyController;
+import com.spring.sfpdi.controllers.PetController;
 import com.spring.sfpdi.controllers.PropertyInjectedController;
 import com.spring.sfpdi.controllers.SetterBasedController;
+import com.spring.sfpdi.services.PrototypeBean;
+import com.spring.sfpdi.services.SingletonBean;
 import com.spring.sfpdi.controllers.I18nController;
 
 @SpringBootApplication
@@ -41,6 +45,32 @@ public class SfpDiApplication {
 		
 		ConstructorBasedController constructorBasedController = (ConstructorBasedController) ctx.getBean("constructorBasedController");
 		System.out.println(constructorBasedController.getGreeting());
+		
+		
+		System.out.println("----------------------Pet Service-------------------");
+		
+		PetController petController = (PetController)ctx.getBean("petController");
+		System.out.println(petController.whichPetIsTheBest());
+		
+		System.out.println("---------------------Scope Test--------------------");
+		
+		SingletonBean singletonBean = (SingletonBean)ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean.getScope());
+		
+
+		SingletonBean singletonBean2 = (SingletonBean)ctx.getBean(SingletonBean.class);
+		System.out.println(singletonBean2.getScope());
+		
+		PrototypeBean prototypeBean = (PrototypeBean)ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean.getScope());
+
+		PrototypeBean prototypeBean2 = (PrototypeBean)ctx.getBean(PrototypeBean.class);
+		System.out.println(prototypeBean2.getScope());
+
+		
+		
+		
 	}
 
 }
+
