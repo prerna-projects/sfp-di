@@ -10,18 +10,19 @@ import com.spring.sfpdi.controllers.MyController;
 import com.spring.sfpdi.controllers.PetController;
 import com.spring.sfpdi.controllers.PropertyInjectedController;
 import com.spring.sfpdi.controllers.SetterBasedController;
+import com.spring.sfpdi.datasource.FakeDataSource;
 import com.spring.sfpdi.services.PrototypeBean;
 import com.spring.sfpdi.services.SingletonBean;
 import com.spring.sfpdi.controllers.I18nController;
 
-@SpringBootApplication
+@ComponentScan(basePackages = {"com.spring.sfpdi.*"})
 public class SfpDiApplication {
 
 	public static void main(String[] args) {
 	
 		ApplicationContext ctx = SpringApplication.run(SfpDiApplication.class, args);
 		
-		System.out.println("---------------------Profile Service---------------");
+		/*System.out.println("---------------------Profile Service---------------");
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		
 		System.out.println(i18nController.sayHello());
@@ -51,7 +52,7 @@ public class SfpDiApplication {
 		
 		PetController petController = (PetController)ctx.getBean("petController");
 		System.out.println(petController.whichPetIsTheBest());
-		
+	
 		System.out.println("---------------------Scope Test--------------------");
 		
 		SingletonBean singletonBean = (SingletonBean)ctx.getBean(SingletonBean.class);
@@ -66,9 +67,15 @@ public class SfpDiApplication {
 
 		PrototypeBean prototypeBean2 = (PrototypeBean)ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getScope());
+*/
+		System.out.println("---------------------Fake Database Test--------------------");
+		
+		FakeDataSource fakeDataSource = (FakeDataSource)ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
+		
 
-		
-		
 		
 	}
 
