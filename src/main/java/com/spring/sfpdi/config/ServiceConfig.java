@@ -10,7 +10,6 @@ import com.spring.sfpdi.datasource.FakeDataSource;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
 
-@PropertySource("classpath:datasource.properties")
 @Configuration
 public class ServiceConfig {
 
@@ -35,7 +34,7 @@ public class ServiceConfig {
 	}
 	
 	
-	@Profile({"dog","deafult"})
+	@Profile({"dog","default"})
 	@Bean
 	PetService dogPetService() {
 		return new PetServiceFactory().getPetService("dog");

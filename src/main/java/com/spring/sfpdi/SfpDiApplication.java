@@ -22,7 +22,7 @@ public class SfpDiApplication {
 	
 		ApplicationContext ctx = SpringApplication.run(SfpDiApplication.class, args);
 		
-		/*System.out.println("---------------------Profile Service---------------");
+		System.out.println("---------------------Profile Service---------------");
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		
 		System.out.println(i18nController.sayHello());
@@ -67,7 +67,7 @@ public class SfpDiApplication {
 
 		PrototypeBean prototypeBean2 = (PrototypeBean)ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getScope());
-*/
+
 		System.out.println("---------------------Fake Database Test--------------------");
 		
 		FakeDataSource fakeDataSource = (FakeDataSource)ctx.getBean(FakeDataSource.class);

@@ -1,0 +1,4 @@
+jdbc:
+    username: YMLDevsuperuser
+    password: YMLDevdbpassword
+    jdbcurl: YMLDevdburl

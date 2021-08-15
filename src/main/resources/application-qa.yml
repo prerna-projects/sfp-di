@@ -1,0 +1,4 @@
+jdbc:
+    username: YMLQAsuperuser
+    password: YMLQAdbpassword
+    jdbcurl: YMLQAdburl
