@@ -3,7 +3,8 @@ spring:
                 active: 
                 -  ES
                 -  dog
-                -  prod
+                
+
 jdbc:   
     username: ymlUserName
     password: ymlPassword

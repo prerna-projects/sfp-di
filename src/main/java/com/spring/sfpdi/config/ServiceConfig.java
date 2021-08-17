@@ -1,28 +1,27 @@
 package com.spring.sfpdi.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
 
 import com.spring.sfpdi.datasource.FakeDataSource;
 import com.springframework.pets.PetService;
 import com.springframework.pets.PetServiceFactory;
 
+@ConfigurationPropertiesScan
 @Configuration
 public class ServiceConfig {
 
 	@Bean
-	FakeDataSource fakeDataSource(@Value("${jdbc.username}")String username, 
-								  @Value("${jdbc.password}")String password, 
-								  @Value("${jdbc.jdbcurl}")String jdbcurl) {
+	FakeDataSource fakeDataSource(SfpPropertyConfig sfpPropertyConfig) {
 		
 		FakeDataSource fakeDataSource = new FakeDataSource();
 		
-		fakeDataSource.setUsername(username);
-		fakeDataSource.setPassword(password);
-		fakeDataSource.setJdbcurl(jdbcurl);
+		fakeDataSource.setUsername(sfpPropertyConfig.getUsername());
+		fakeDataSource.setPassword(sfpPropertyConfig.getPassword());
+		fakeDataSource.setJdbcurl(sfpPropertyConfig.getJdbcurl());
 		
 		return fakeDataSource;
 	}

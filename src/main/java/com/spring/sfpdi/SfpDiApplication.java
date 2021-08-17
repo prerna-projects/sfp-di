@@ -1,10 +1,12 @@
 package com.spring.sfpdi;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
+import com.spring.sfpdi.config.SfpConstructorConfig;
+import com.spring.sfpdi.config.SfpPropertyConfig;
 import com.spring.sfpdi.controllers.ConstructorBasedController;
 import com.spring.sfpdi.controllers.MyController;
 import com.spring.sfpdi.controllers.PetController;
@@ -15,7 +17,8 @@ import com.spring.sfpdi.services.PrototypeBean;
 import com.spring.sfpdi.services.SingletonBean;
 import com.spring.sfpdi.controllers.I18nController;
 
-@ComponentScan(basePackages = {"com.spring.sfpdi.*"})
+@ComponentScan("com.spring.sfpdi.*")
+@PropertySource("application.yml")
 public class SfpDiApplication {
 
 	public static void main(String[] args) {
@@ -75,7 +78,20 @@ public class SfpDiApplication {
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
 		
-
+		System.out.println("---------------------Property Binding--------------------");
+		
+		SfpPropertyConfig sfpPropertyConfig = ctx.getBean(SfpPropertyConfig.class);
+		System.out.println(sfpPropertyConfig.getUsername());
+		System.out.println(sfpPropertyConfig.getPassword());
+		System.out.println(sfpPropertyConfig.getJdbcurl());
+		
+		System.out.println("---------------------Constructor Binding--------------------");
+		
+		SfpConstructorConfig sfpConstructorConfig = ctx.getBean(SfpConstructorConfig.class);
+		System.out.println(sfpConstructorConfig.getUsername());
+		System.out.println(sfpConstructorConfig.getPassword());
+		System.out.println(sfpConstructorConfig.getJdbcurl());
+		
 		
 	}
 
